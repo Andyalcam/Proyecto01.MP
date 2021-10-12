@@ -9,18 +9,33 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* @author Alfonso Mondragon Segoviano
+* @author Andrea Alvarado Camacho
+* @author Abner Elias Velazquez Rosas
+* @author Jose Luis Almanza Torres
+* @version 1.0 Octubre 2021.
+* @since Modelado y Programacion 2022-1. Proyecto 01.
+*/
+
 public class Main {
+    public static List<String> ciudadesNombres = new ArrayList<>();
+    public static List<Ciudad> ciudades = new ArrayList<>();
+
     public static void main(String[] args) {
 
         List<Viaje> viajes = new ArrayList<>();
-        List<String> ciudadesNombres = new ArrayList<>();
-        List<Ciudad> ciudades = new ArrayList<>();
 
         leerCSV(viajes, ciudadesNombres, ciudades);
         imprimirViajes(viajes);
 
     }
 
+    /**
+     * Realiza la llamada a la API para obtener la temperatura de la ciudad
+     * @param ciudad almacena los datos de la ciudad 
+     * @return 0
+     */
     public static double busquedaTemperatura(Ciudad ciudad){
         try {
             URL url = new URL("http://api.openweathermap.org/data/2.5/weather?lat="+ciudad.getLatitud()+"&lon="+ciudad.getLongitud()+"&appid=4b342a6371f1424c8693cb762d8c41c4");
@@ -47,13 +62,23 @@ public class Main {
         return 0.0;
     }
 
+
+    /**
+     * Imprime los viajes
+     * @param viajes
+     */
     public static void imprimirViajes(List<Viaje> viajes){
         for(Viaje viaje : viajes){
             System.out.println(viaje.toString());
         }
     }
 
-    public static Ciudad infoCiudad(String nombre, List<String> ciudadesNombres, List<Ciudad> ciudades){
+    /**
+     * Almacena temporalmente la informacion de clima de la ciudad
+     * @param nombre almacena el nombre de la ciudad
+     * @return null 
+     */
+    public static Ciudad infoCiudad(String nombre){
         for(int i = 0; i < ciudadesNombres.size(); i++){
             if(ciudadesNombres.get(i).equals(nombre)){
                 return ciudades.get(i);
@@ -62,10 +87,13 @@ public class Main {
         return null;
     }
 
-    public static void leerCSV(List<Viaje> viajes, List<String> ciudadesNombres, List<Ciudad> ciudades){
+
+    /**
+     * Lee los datos del archivo CSV
+     * @param viajes
+     */
+    public static void leerCSV(List<Viaje> viajes){
         int contador=0;
-
-
         String csv = "Prpyecto1/src/Java/Clima/dataset1.csv";
         BufferedReader bufferedReader = null;
         String fila;
@@ -91,8 +119,8 @@ public class Main {
                             ciudadesNombres.add(datos[1]);
                         }
 
-                        cdOrigen = infoCiudad(datos[0], ciudadesNombres, ciudades);
-                        cdDestino = infoCiudad(datos[1], ciudadesNombres, ciudades);
+                        cdOrigen = infoCiudad(datos[0]);
+                        cdDestino = infoCiudad(datos[1]);
 
                         viajes.add(new Viaje(contador, cdOrigen, cdDestino));
                     }catch (Exception e){
