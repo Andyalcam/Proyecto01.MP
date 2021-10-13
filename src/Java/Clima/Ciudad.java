@@ -11,7 +11,8 @@ package Java.Clima;
 
 public class Ciudad{
     private final String nombre, latitud, longitud;
-    private double temperatura;
+    private Double temperatura, minimo, maximo, sensacion;
+    private Long humedad;
 
     /**
      *Constructor de objeto tipo Ciudad  
@@ -66,13 +67,72 @@ public class Ciudad{
     public String getLongitud() {
         return longitud;
     }
-
+    
     /**
-     * Da una cadena con los elementos contenidos en la lista.
-     * @return una representación de la lista.
+     * Accede a la informacion de la temperatura minima
+     * @return minimo
      */
-    public String toString(){
-        return "Nombre de la ciudad: " + this.getNombre() + "\n" + "Temperatura: " + this.getTemperatura();
+    public Double getMinimo() {
+        return minimo;
     }
 
+    /**
+     * Permite cambiar la temperatura minima
+     * @param minimo
+     * @return minimo
+     */
+    public void setMinimo(Double minimo) {
+        this.minimo = minimo;
+    }
+
+    /**
+     * Accede a la informacion de la sensacion termica
+     * @return sensacion
+     */
+    public Double getSensacion() {
+        return sensacion;
+    }
+
+    /**
+     * Permite cambiar la sensacion termica
+     * @param sensacion
+     * @return sensacion
+     */
+    public void setSensacion(Double sensacion) {
+        this.sensacion = sensacion;
+    }
+    
+    /**
+     * Accede a la informacion de la temperatura maxima
+     * @return maximo
+     */
+    public Double getMaximo() {
+        return maximo;
+    }
+    
+    /**
+     * Permite cambiar la temperatura maxima
+     * @param maximo
+     * @return maximo
+     */
+    public void setMaximo(Double maximo) {
+        this.maximo = maximo;
+    }
+
+    /**
+     * Accede a la informacion de la humedad
+     * @return humedad
+     */
+    public Long getHumedad() {
+        return humedad;
+    }
+
+    /**
+     * Permite cambiar la humedad
+     * @param humedad
+     * @return humedad
+     */
+    public void setHumedad(Long humedad) {
+        this.humedad = humedad;
+    }
 }

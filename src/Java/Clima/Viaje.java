@@ -51,10 +51,15 @@ public class Viaje {
     }
 
     /**
-     * Da una cadena con los elementos contenidos en la lista.
-     * @return una representación de la lista.
+     * Da una cadena con la informacion requerida.
+     * @return una representación de la informacion
      */
+    @Override
     public String toString(){
-        return "Numero de viaje: " + this.getNumeroDeViaje() + " Ciudad Origen:" + this.getCiudadOrigen().getNombre() + ", Temperatura: " + this.getCiudadOrigen().getTemperatura() + "\t - \t Ciudad Destino: " + this.getCiudadDestino().getNombre() + " Temperatura: " + this.getCiudadDestino().getTemperatura();
+        return "Numero de viaje: " + this.getNumeroDeViaje() + "   Ciudad Origen:" + this.getCiudadOrigen().getNombre() + ", Temperatura: " + this.getCiudadOrigen().getTemperatura()+ "   , T Minima: "+ this.getCiudadOrigen().getMinimo()  
+                + "   , T Maxima: "+ this.getCiudadOrigen().getMaximo() + " , Humedad: " + this.getCiudadOrigen().getHumedad()+ " , Sensación Térmica: " + this.getCiudadOrigen().getSensacion()  +
+                
+                "\t - \t Ciudad Destino: " + this.getCiudadDestino().getNombre() + " Temperatura: " + this.getCiudadDestino().getTemperatura() + "  , T Minima: "+ this.getCiudadDestino().getMinimo()  + 
+                "  , T Maxima: "+ this.getCiudadDestino().getMaximo() + " , Humedad: " + this.getCiudadDestino().getHumedad()+ " , Sensación Térmica: " + this.getCiudadDestino().getSensacion()  +"\n";
     }
 }
