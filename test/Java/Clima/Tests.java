@@ -6,15 +6,11 @@ package Java.Clima;
  */
 
 import static Java.Clima.Main.leerCSV;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import static junit.framework.Assert.assertEquals;
 import org.junit.Test;
@@ -42,9 +38,7 @@ public class Tests {
     @Test
     public void listaViajes(){
         List<Viaje> viajes = new ArrayList<>();
-        List<String> ciudadesNombres = new ArrayList<>();
-        List<Ciudad> ciudades = new ArrayList<>();
-        leerCSV(viajes, ciudadesNombres, ciudades);
+        leerCSV(viajes);
         assertEquals(3000, viajes.size());
     }
     
